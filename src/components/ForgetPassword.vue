@@ -71,7 +71,7 @@ import router from "../router";
 export default {
   data: () => ({
     visible: false,
-    recovery: true,
+    recovery: false,
     errorCtx: "testeeee bacana",
     snackbar: false,
     inputs: {
