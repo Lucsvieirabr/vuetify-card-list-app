@@ -7,7 +7,7 @@ import ResetPasswordView from '../views/ResetPasswordView.vue'
 const routes = [
   { path: '/', component: LoginView, name: 'login' },
   { path: '/home', component: HomeView, name: 'home' },
-  {path: '/reset-password', component: ResetPasswordView, name: 'reset-password'},
+  {path: '/resetPassword', component: ResetPasswordView, name: 'reset-password'},
 ]
 
 const router = createRouter({
