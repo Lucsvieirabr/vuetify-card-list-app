@@ -49,6 +49,17 @@
       >
         Sign Up
       </v-btn>
+      <v-card-text class="text-center">
+        <v-btn
+          variant="tonal"
+          class="text-blue text-decoration-none"
+          elevation="24"
+          rel="noopener noreferrer"
+          @click="pushToLogin"
+        >
+          Go to Login
+        </v-btn>
+      </v-card-text>
     </v-card>
     <v-card
       v-else
@@ -63,7 +74,7 @@
       <v-btn
         class="mb-3"
         color="blue"
-        size="large"
+        size="small"
         variant="tonal"
         block
         @click="pushToLogin"
@@ -83,6 +94,7 @@
   </v-form>
 </template>
 <script>
+import { fa } from "vuetify/locale";
 import { supabase } from "../lib/supabaseClient";
 import router from "../router";
 export default {
@@ -113,6 +125,9 @@ export default {
       const { error } = await supabase.auth.signUp({
         email: this.inputs.email,
         password: this.inputs.password,
+        options: {
+          emailRedirectTo: "https://vuetify-card-list-app.vercel.app",
+        },
       });
       if (error) {
         this.errorCtx = error.message;
@@ -122,7 +137,7 @@ export default {
       this.signUp = true;
     },
     pushToLogin() {
-      router.push("/login");
+      this.$emit("change", false);
     },
   },
 };
