@@ -176,7 +176,6 @@ export default {
       this.showModal = true;
     },
     async updateCardToSupabase(cardToInsert) {
-      console.log(cardToInsert);
       const { data, error } = await supabase
         .from("CardsTable")
         .update({
