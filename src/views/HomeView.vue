@@ -25,7 +25,6 @@
       :show-modal="showModal"
       @update:showModal="(e) => (showModal = e)"
       @close="closeModal"
-      class="position-absolute"
     />
   </v-container>
 
@@ -53,11 +52,16 @@
         />
       </v-col>
     </v-row>
-    <v-snackbar v-if="snackbar" v-model="snackbar">
+    <v-snackbar
+      v-if="snackbar"
+      v-model="snackbar"
+      :color="color"
+      elevation="24"
+    >
       {{ errorCtx }}
 
       <template v-slot:actions>
-        <v-btn color="pink" variant="text" @click="snackbar = false">
+        <v-btn color="white" variant="text" @click="snackbar = false">
           Close
         </v-btn>
       </template>
@@ -84,6 +88,7 @@ export default {
       tags: [],
       errorCtx: "",
       snackbar: false,
+      color: "error",
     };
   },
   computed: {
@@ -111,8 +116,9 @@ export default {
     },
   },
   methods: {
-    displaySnackbar(message) {
+    displaySnackbar(message, color = "error") {
       this.snackbar = true;
+      this.color = color;
       this.errorCtx = message;
     },
     async getUserCards() {
@@ -150,6 +156,7 @@ export default {
       this.insertCardToSupabase(e).then(async () => {
         this.cards = await this.getUserCards();
       });
+      this.displaySnackbar("Card added", "success");
     },
     async handleDelete(id) {
       const card = this.cards[id];
@@ -162,6 +169,7 @@ export default {
         return;
       }
       this.cards = await this.getUserCards();
+      this.displaySnackbar("Card deleted", "error");
     },
     handleEdit(i) {
       this.editingCard = this.cards[i];
@@ -189,6 +197,7 @@ export default {
       this.updateCardToSupabase(cardToInsert).then(async () => {
         this.cards = await this.getUserCards();
       });
+      this.displaySnackbar("Card updated", "success");
       this.editingCard = null;
     },
     closeModal() {
