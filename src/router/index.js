@@ -2,10 +2,12 @@ import { createWebHistory, createRouter } from 'vue-router'
 import { supabase } from "../lib/supabaseClient";
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
+import ResetPasswordView from '../views/ResetPasswordView.vue'
 
 const routes = [
   { path: '/', component: LoginView, name: 'login' },
   { path: '/home', component: HomeView, name: 'home' },
+  {path: '/reset-password', component: ResetPasswordView, name: 'reset-password'},
 ]
 
 const router = createRouter({
@@ -27,6 +29,10 @@ router.beforeEach(async (to, from, next) => {
   }
 
   if (to.name !== 'login' && !user) {
+    return next({ name: 'login' })
+  }
+
+  if (to.name === 'reset-password' && !user) {
     return next({ name: 'login' })
   }
   
