@@ -1,12 +1,3 @@
 {
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/resetPassword"
-    },
-    {
-      "src": "/api/resetPassword",
-      "dest": "/api/resetPassword"
-    }
-  ]
+  "rewrites": [{ "source": "/:path*", "destination": "/index.html" }]
 }
