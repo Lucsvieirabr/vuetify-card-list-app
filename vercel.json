@@ -2,7 +2,11 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "api/index.js"
+      "dest": "/resetPassword"
+    },
+    {
+      "src": "/api/resetPassword",
+      "dest": "/api/resetPassword"
     }
   ]
 }
