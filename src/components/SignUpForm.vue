@@ -101,7 +101,7 @@ export default {
   data: () => ({
     visible: false,
     signUp: false,
-    errorCtx: "testeeee bacana",
+    errorCtx: "",
     snackbar: false,
     inputs: {
       email: "",

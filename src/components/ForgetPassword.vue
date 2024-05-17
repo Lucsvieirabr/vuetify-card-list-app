@@ -72,7 +72,7 @@ export default {
   data: () => ({
     visible: false,
     recovery: false,
-    errorCtx: "testeeee bacana",
+    errorCtx: "",
     snackbar: false,
     inputs: {
       email: "",
@@ -101,13 +101,6 @@ export default {
       }
       this.recovery = true;
     },
-
-    // Cleaned up the code by:
-    // - Standardizing variable names
-    // - Removing debugging statements
-    // - Improving readability
-    // - Using consistent spacing and indentation
-    // - Removing redundant return statements
     pushToLogin() {
       router.go(0);
     },
