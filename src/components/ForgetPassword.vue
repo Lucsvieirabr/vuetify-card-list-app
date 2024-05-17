@@ -91,7 +91,7 @@ export default {
       const { data, error } = await supabase.auth.resetPasswordForEmail(
         this.inputs.email,
         {
-          redirectTo: "http://localhost:3000/reset-password",
+          redirectTo: "https://vuetify-card-list-app.vercel.app/reset-password",
         }
       );
       if (error) {
