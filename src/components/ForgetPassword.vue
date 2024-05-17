@@ -109,7 +109,7 @@ export default {
     // - Using consistent spacing and indentation
     // - Removing redundant return statements
     pushToLogin() {
-      router.push("/login");
+      router.push("/");
     },
   },
 };
