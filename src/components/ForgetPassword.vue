@@ -71,7 +71,7 @@ import router from "../router";
 export default {
   data: () => ({
     visible: false,
-    recovery: false,
+    recovery: true,
     errorCtx: "testeeee bacana",
     snackbar: false,
     inputs: {
@@ -109,7 +109,7 @@ export default {
     // - Using consistent spacing and indentation
     // - Removing redundant return statements
     pushToLogin() {
-      router.push("/");
+      router.go(0);
     },
   },
 };
